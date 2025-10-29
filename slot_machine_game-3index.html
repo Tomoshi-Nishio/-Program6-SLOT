@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>5W1Hスロットマシン（bought用）</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      padding: 40px;
+    }
+    h1 {
+      color: #0077b6;
+    }
+    .slot-container {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+    }
+    .slot {
+      width: 180px;
+      height: 100px;
+      margin: 0 15px;
+      border: 3px solid #0077b6;
+      border-radius: 10px;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      padding: 10px;
+    }
+    .slot .en {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .slot .jp {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 5px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #005f87;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎰 スロット：Who / Where / When</h1>
+  <p>ボタンを押して、「誰が・どこで・いつ」bought を決めよう！</p>
+
+  <div class="slot-container">
+    <div class="slot" id="who"><div class="en">---</div><div class="jp"></div></div>
+    <div class="slot" id="where"><div class="en">---</div><div class="jp"></div></div>
+    <div class="slot" id="when"><div class="en">---</div><div class="jp"></div></div>
+  </div>
+
+  <button onclick="spinSlots()">スピン！</button>
+
+  <script>
+    const whenOptions = [
+      {en: "last summer", jp: "昨年の夏"},
+      {en: "this morning", jp: "今朝"},
+      {en: "two days ago", jp: "2日前"},
+      {en: "yesterday", jp: "昨日"},
+      {en: "in 2020", jp: "2020年に"},
+      {en: "during the trip", jp: "旅行中に"},
+      {en: "last weekend", jp: "先週末に"},
+      {en: "on Sunday", jp: "日曜日に"},
+      {en: "at lunchtime", jp: "昼食時に"},
+      {en: "after school", jp: "放課後に"}
+    ];
+
+    const whereOptions = [
+      {en: "on the beach", jp: "ビーチで"},
+      {en: "at school", jp: "学校で"},
+      {en: "in the park", jp: "公園で"},
+      {en: "in the forest", jp: "森の中で"},
+      {en: "by the river", jp: "川のそばで"},
+      {en: "near the station", jp: "駅の近くで"},
+      {en: "on the mountain", jp: "山で"},
+      {en: "at the zoo", jp: "動物園で"},
+      {en: "in the street", jp: "通りで"},
+      {en: "in the sea", jp: "海の中で"}
+    ];
+
+    const whoOptions = [
+      {en: "my father", jp: "私の父"},
+      {en: "a stranger", jp: "見知らぬ人"},
+      {en: "my best friend", jp: "親友"},
+      {en: "our teacher", jp: "私たちの先生"},
+      {en: "my brother", jp: "私の兄（弟）"},
+      {en: "a fisherman", jp: "漁師"},
+      {en: "the girl", jp: "その女の子"},
+      {en: "my classmate", jp: "私のクラスメイト"},
+      {en: "an old man", jp: "年配の男性"},
+      {en: "a tourist", jp: "観光客"}
+    ];
+
+    function spinSlots() {
+      const who = whoOptions[Math.floor(Math.random() * whoOptions.length)];
+      const where = whereOptions[Math.floor(Math.random() * whereOptions.length)];
+      const when = whenOptions[Math.floor(Math.random() * whenOptions.length)];
+
+      document.querySelector("#who .en").textContent = who.en;
+      document.querySelector("#who .jp").textContent = `(${who.jp})`;
+
+      document.querySelector("#where .en").textContent = where.en;
+      document.querySelector("#where .jp").textContent = `(${where.jp})`;
+
+      document.querySelector("#when .en").textContent = when.en;
+      document.querySelector("#when .jp").textContent = `(${when.jp})`;
+    }
+  </script>
+</body>
+</html>
